@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Power of Purple</title>
+  <%= stylesheet_link_tag    'default', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'default', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <style type="text/css">
+  /* Define the body style */
+body {
+    font-family:Arial;
+    font-size:16px;
+    
+}
+
+#menuwrapper{
+	position: fixed;
+}
+/* We remove the margin, padding, and list style of UL and LI components */
+#menuwrapper ul, #menuwrapper ul li{
+    margin:0;
+    padding:0;
+    list-style:none;
+    text-align: center;
+    width: 150px;
+}
+
+/* We apply background color and border bottom white and width to 150px */
+#menuwrapper ul li{
+    background-color:#333;
+    border-bottom:solid 1px gray;
+    width:150px;
+    cursor:pointer;
+
+}
+
+/* We apply the background hover color when user hover the mouse over of the li component */
+#menuwrapper ul li:hover{
+    background-color:#444;
+    position:relative;
+}
+
+/* We apply the link style */
+#menuwrapper ul li a{
+    padding:5px 15px;
+    color:#fff;
+    display:block;
+    text-decoration:none;
+}
+
+/**** SECOND LEVEL MENU ****/
+/* We make the position to absolute for flyout menu and hidden the ul until the user hover the parent li item */
+#menuwrapper ul li ul{
+    position:absolute;
+    display:none;
+}
+
+/* When user has hovered the li item, we show the ul list by applying display:block, note: 150px is the individual menu width.  */
+#menuwrapper ul li:hover ul{
+    left:150px;
+    top:0px;
+    display:block;
+}
+
+/* we apply different background color to 2nd level menu items*/
+#menuwrapper ul li ul li{
+    background-color:#444;
+}
+
+/* We change the background color for the level 2 submenu when hovering the menu */
+#menuwrapper ul li:hover ul li:hover{
+    background-color:#555;
+}
+
+/* We style the color of level 2 links */
+#menuwrapper ul li ul li a{
+    color:#fff;
+    display:block;
+    width:120px;
+}
+
+/**** THIRD LEVEL MENU ****/
+/* We need to hide the 3rd menu, when hovering the first level menu */
+#menuwrapper ul li:hover ul li ul{
+    position:absolute;
+    display:none;
+}
+
+/* We show the third level menu only when they hover the second level menu parent */
+#menuwrapper ul li:hover ul li:hover ul{
+    display:block;
+    left:150px;
+    top:0;
+}
+
+/* We change the background color for the level 3 submenu*/
+#menuwrapper ul li:hover ul li:hover ul li{
+    background:#111;
+}
+
+/* We change the background color for the level 3 submenu when hovering the menu */
+
+#menuwrapper ul li:hover ul li:hover ul li:hover{
+    background:#111;
+}
+
+/* We change the level 3 link color */
+#menuwrapper ul li:hover ul li:hover ul li a{
+    color:#ffffff;
+}
+
+/* Clear float */
+.clear{
+    clear:both;
+}</style>
+</head>
+<body>
+	<link href="css_flyoutverticalmenu.css" type="text/css" rel="Stylesheet" />
+<div id="menuwrapper">
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Logboek</a></li>
+        <li><a href="#">Personages</a>
+            <ul>
+                <li><a href="#">Nieuw Personage</a>
+                    <ul>
+                        <li><a href="#">NPC</a></li>
+                        <li><a href="#">Met character Sheet</a></li>
+                        <li><a href="#">Je moeder</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Lijst</a></li>
+                <li><a href="#">Facties</a></li>
+                <li><a href="#">Party</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Locaties</a>
+            <ul>
+                <li><a href="#">Steenpost</a></li>
+                <li><a href="#">De Wereld</a></li>
+                <li><a href="#">Waar zijn we nu?</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Voorwerpen</a>
+        <li><a href="#">Tijdlijn</a>
+        <li><a href="#">Gebeurtenis</a>
+    </ul>
+</div>
+	
+<%= yield %>
+
+</body>
+</html>
